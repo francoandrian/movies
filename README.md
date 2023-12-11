@@ -22,6 +22,18 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
+## Solution for troubleshooting
+
+### Error: Node packages may not be installed. Try installing with 'npm install'. Error: Could not find the '@angular-devkit/build-angular:application' builder's node package.
+
+If you encounter this error while running the `ng build` or `npm run build` command, please run the following command in your project's root directory:
+
+\`\`\`
+npm install --save-dev @angular-devkit/build-angular
+\`\`\`
+
+This will install the `@angular-devkit/build-angular` package and resolve the issue. After the installation, you can try running the `ng build` or `npm run build` command again.
+
 ## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+To get more help on the Angular CLI, use `ng help` or visit the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

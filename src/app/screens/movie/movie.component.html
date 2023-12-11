@@ -1,0 +1,37 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span> {{movie.title}} </span>
+    <span class="example-spacer"></span>
+    <div style = "flex-grow: 1;"></div>
+    <button mat-flat-button color="warn" (click)="onReturn()">
+    <mat-icon>keyboard_return</mat-icon>
+      Return to movies
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div class="movie-details-container">
+  <div class="movie-details-header">
+    <h2>{{ movie.title }}</h2>
+    <p>Released: {{ movie.releasedDate }}</p>
+  </div>
+  <div class="movie-details-content">
+    <div class="movie-details-image">
+      <img [src]="movie.imageLink" alt="{{ movie.title }}">
+    </div>
+    <div class="movie-details-description">
+      <p><strong>Rating:</strong> {{ movie.rating }}</p>
+      <p><strong>Duration:</strong> {{ movie.duration }}</p>
+      <p><strong>Genre:</strong> {{ movie.genre.join(', ') }}</p>
+      <p><strong>Description:</strong> {{ movie.description }}</p>
+    </div>
+  </div>
+  <div class="movie-details-actions">
+    <mat-slide-toggle color="primary" [(ngModel)]="movie.inWatchlist" (change)="onToggleWatchlist()">
+      {{ movie.inWatchlist ? 'In Watchlist' : 'Add to Watchlist' }}
+    </mat-slide-toggle>
+  </div>
+  <div class="movie-details-trailer">
+    <iframe width="560" height="315" [src]="getEmbeddedVideoUrl(movie.trailerLink)" frameborder="0" allowfullscreen></iframe>
+  </div>
+</div>

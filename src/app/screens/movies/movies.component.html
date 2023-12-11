@@ -1,0 +1,35 @@
+<mat-toolbar color="primary">
+  <span>Movies application</span>
+</mat-toolbar>
+
+<div class="sorting-buttons">
+  <button mat-flat-button color="primary" (click)="sortByTitle()">
+    <mat-icon>sort</mat-icon>
+    Sort by Title
+  </button>
+  <button mat-flat-button color="primary" (click)="sortByReleaseDate()">
+    <mat-icon>event</mat-icon>
+    Sort by Release Date
+  </button>
+</div>
+
+<div class="cards-container">
+  <div *ngFor="let item of movies">
+    <mat-card class="movies-card">
+      <mat-card-header>
+        <mat-card-title>{{ item.title }}</mat-card-title>
+        <mat-card-subtitle>{{ item.releasedDate }}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image class="movie-thumbnail-image" [src]="item.imageLink" (click)="onImageClick(item)">
+      <mat-card-content class="movie-card-description">
+        <br>
+        <b>Synopsis:</b> {{item.description}}
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <mat-slide-toggle class="movies-card-action" color="primary" (change)="onToggleWatchlist(item)" [(ngModel)]="item.inWatchlist">
+          {{ item.inWatchlist ? 'In my watchlist' : 'Add to watchlist' }}
+        </mat-slide-toggle>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
